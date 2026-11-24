@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07041a">
+<title>Para ti, mi amor Meyly ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Fondo animado (estrellas, partículas, estrellas fugaces) -->
+<canvas id="galaxia" aria-hidden="true"></canvas>
+<div class="nebulosa" aria-hidden="true"></div>
+<div id="corazones-flotantes" aria-hidden="true"></div>
+
+<!-- 2. PANTALLA DE BIENVENIDA -->
+<section id="bienvenida" class="pantalla">
+  <h1 class="titulo">Para ti, mi amor Meyly ❤️</h1>
+  <p class="sub">Hoy quiero regalarte un pequeño universo, porque alguien tan especial como tú merece algo tan bonito como las estrellas.</p>
+  <button id="btn-entrar" class="btn btn-grande">✨ ENTRAR A MI UNIVERSO ✨</button>
+</section>
+
+<!-- Universo principal -->
+<main id="universo" hidden>
+  <section id="inicio" class="seccion" data-frase="Eres la constelación que mi corazón siempre busca. ✨">
+    <canvas id="corazon-estrellas" class="corazon-canvas" aria-label="Corazón formado por estrellas"></canvas>
+    <h2 class="titulo medio">PARA TI, MI AMOR MEYLY ❤️</h2>
+    <p class="lema">De todas las estrellas que existen en el universo, tú siempre serás mi favorita.</p>
+    <article class="cristal mensaje">
+      <span class="mini c1">💗</span><span class="mini c2">✨</span><span class="mini c3">💖</span><span class="mini c4">💫</span>
+      <h3>Mi querida Meyly ❤️</h3>
+      <p>No sé si las estrellas saben lo mucho que brillas en mi vida, pero quiero que sepas que eres una persona demasiado especial para mí.</p>
+      <p>Tu sonrisa tiene esa magia que puede mejorar mis días y tu forma de ser hace que cada momento contigo sea único.</p>
+      <p>Si pudiera regalarte algo, te regalaría la capacidad de verte con mis ojos, para que entiendas lo maravillosa que eres.</p>
+      <p>Te quiero muchísimo, mi amor. ❤️</p>
+    </article>
+  </section>
+
+  <section id="carta" class="seccion" data-frase="Hay palabras que solo caben en un sobre rosado. 💌">
+    <button id="btn-carta" class="btn btn-grande">💌 Tienes una cartita para ti</button>
+    <button id="btn-carta2" class="btn btn-grande">💌 Y otra cartita más</button>
+  </section>
+
+  <section id="frases" class="seccion" data-frase="Cada estrella guarda una palabra para ti. 🌟">
+    <h2 class="titulo medio">Frases para ti 💫</h2>
+    <article class="cristal frase-caja"><p id="frase-texto">Toca el botón para recibir una frase.</p></article>
+    <button id="btn-frase" class="btn btn-grande">💫 Una frase para ti</button>
+  </section>
+
+  <section id="sorpresa" class="seccion" data-frase="Cierra los ojos un segundo… y pide un deseo. 🌠">
+    <button id="btn-sorpresa" class="btn btn-grande">🎁 DESCUBRE TU SORPRESA</button>
+  </section>
+
+  <section id="tiempo" class="seccion" data-frase="El tiempo contigo se mide en estrellas. ⏳">
+    <h2 class="titulo medio">Cada segundo contigo es especial ❤️</h2>
+    <div class="cristal contador" id="contador">
+      <div><b id="c-dias">0</b><small>Días</small></div>
+      <div><b id="c-horas">0</b><small>Horas</small></div>
+      <div><b id="c-min">0</b><small>Minutos</small></div>
+      <div><b id="c-seg">0</b><small>Segundos</small></div>
+    </div>
+    <p id="aviso-fecha" class="aviso" hidden>Configura la fecha de inicio en <code>script.js</code> (START_DATE).</p>
+    <button id="btn-inicio" class="btn">⬆ Volver al inicio</button>
+  </section>
+</main>
+
+<!-- Frase romántica por sección -->
+<div id="frase" class="frase" role="status" aria-live="polite"></div>
+
+<!-- 3. REPRODUCTOR -->
+<div id="reproductor" class="cristal reproductor" hidden>
+  <button id="btn-play" class="redondo" aria-label="Reproducir o pausar">▶</button>
+  <div class="info"><strong>Te Amo Tanto</strong><span>Jesse &amp; Joy</span></div>
+  <div class="ondas" id="ondas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+<button id="btn-flotante" class="redondo flotante" aria-label="Música" hidden>🎵</button>
+<audio id="audio" src="assets/te-amo-tanto.mp3" preload="auto" loop></audio>
+
+<!-- Carta interactiva -->
+<div id="modal-carta" class="modal" hidden>
+  <button id="sobre" class="sobre" aria-label="Abrir sobre"><span class="solapa"></span><span class="sello">❤️</span><em>Toca para abrir</em></button>
+  <article id="papel" class="papel cristal-claro" hidden>
+    <h3>Para mi hermosa Meyly ❤️</h3>
+    <p>Mi amor, quiero dedicarte estas pequeñas palabras para recordarte lo importante que eres para mí.</p>
+    <p>Desde que llegaste a mi vida, has conseguido sacarme sonrisas de una manera muy especial. Me encanta compartir momentos contigo, hablar contigo y saber que formas parte de mis días.</p>
+    <p>No prometo ser perfecto, pero sí quiero esforzarme por hacerte feliz, cuidarte, respetarte y demostrarte con pequeños detalles lo mucho que te quiero.</p>
+    <p>Quiero que sigamos creando recuerdos bonitos, riéndonos juntos y disfrutando cada momento.</p>
+    <p>Si algún día dudas de lo especial que eres, recuerda que existe alguien que sonríe al pensar en ti.</p>
+    <p>Gracias por existir, mi Meyly. ❤️</p>
+    <p class="firma">Con mucho amor, para ti. 💗</p>
+    <button class="btn btn-cerrar-carta">Cerrar y volver a la galaxia</button>
+  </article>
+  <article id="papel2" class="papel cristal-claro" hidden>
+    <h3>Mi amor, Meyly ❤️</h3>
+    <p>Quiero que sepas que eres una de las cosas más bonitas que me ha regalado la vida. Quizás estas palabras no sean suficientes para expresar todo lo que siento por ti, pero quiero recordarte lo especial que eres para mí.</p>
+    <p>No importa cuántas estrellas existan en el universo, ninguna tendrá el brillo que tienes tú en mis ojos.</p>
+    <p>Quiero seguir regalándote sonrisas, momentos bonitos y motivos para ser feliz. No prometo ser perfecto, pero sí darte un cariño sincero y demostrarte cada día lo mucho que significas para mí.</p>
+    <p>Si tuviera que elegir nuevamente entre millones de estrellas, te volvería a elegir a ti. 🌌❤️</p>
+    <p>Te amo tanto, mi Meyly. 💗</p>
+    <p class="firma">Con todo mi cariño, para ti. 💌</p>
+    <button class="btn btn-cerrar-carta">Cerrar y volver a la galaxia</button>
+  </article>
+</div>
+
+<!-- Sorpresa -->
+<div id="modal-sorpresa" class="modal oscuro" hidden>
+  <canvas id="corazon-sorpresa" class="corazon-canvas grande"></canvas>
+  <p id="s-texto1" class="s-texto">Meyly, entre millones de estrellas, mi favorita siempre serás tú. ❤️</p>
+  <p id="s-texto2" class="s-texto">Te quiero muchísimo, mi amor. Nunca olvides lo especial que eres para mí. 💗</p>
+  <button id="btn-cerrar-sorpresa" class="btn">Volver a la galaxia</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
